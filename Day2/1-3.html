@@ -124,6 +124,9 @@ footer .container {
 </section>
 <section>
   <h2>閲覧権限が全員にあるフォルダ</h2>
+<!-- 1-3 閲覧権限が Everyone のフォルダ名をブラウザに表示 -->
+  <ul id="list"></ul>
+<!-- ここにliを作りたいが何個作ればいいか不明の為作成不可 -->
 </section>
 </div>
 <script>
@@ -150,7 +153,7 @@ footer .container {
       folderName: '開発本部',
       viewAuth: '開発本部',
       editAuth: '開発本部',
-      deleteAuth: '開発本部',
+      deleteAuth: '開発本部'
     },
     f005: {
       folderName: '総務部',
@@ -171,21 +174,24 @@ footer .container {
       deleteAuth: '企画部'
     }
   };
-
-var fold = fileManage['f00' + (i + 1)]['folderName'];
-var edit = fileManage['f00' + (i + 1)]['viewAuth'];
-
 for (var i = 0; i < 7 ; i++) {
   document.getElementById('folderName' + (i + 1)).textContent = fileManage['f00' + (i + 1)]['folderName'];
   document.getElementById('viewAuth' + (i + 1)).textContent = fileManage['f00' + (i + 1)]['viewAuth'];
   document.getElementById('editAuth' + (i + 1)).textContent = fileManage['f00' + (i + 1)]['editAuth'];
   document.getElementById('deleteAuth' + (i + 1)).textContent = fileManage['f00' + (i + 1)]['deleteAuth'];
-
-  if (edit === 'Everyone'){
-    console.log(fold);
-  } else {
-   特になし
-  };
+// 1-3 閲覧権限が Everyone のフォルダ名をコンソールに表示
+  if (fileManage['f00' + (i + 1)]['viewAuth'] === 'Everyone'){
+    var output = fileManage['f00' + (i + 1)]['folderName'];
+    console.log(output);
+  // 1-3 閲覧権限が Everyone のフォルダ名をリスト化して表示
+    // 箇条書きにするliの箱を作成
+    var newLi = document.createElement('li');
+    var listHTML = document.getElementById('list');
+    newLi.textContent = fileManage['f00' + (i + 1)].folderName;
+    // newLi.textContent = document.createElement('li').textContent
+    // listHTML(=idがlistの部分)にnewLiを追加する
+    listHTML.appendChild(newLi);
+  }
 };
 </script>
 </body>
