@@ -1,124 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>テンプレート</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>ファイル管理</title>
 <style>
-html, body {
-  height: 100%;
-  margin: 0;
+h1 {
+    border:solid 3px #4169E1;
+    padding:3px;
+    color:#190707;
+    width:250px;
 }
-header {
-  background-color: #1aaedb;
-  border-bottom: #ead963 6px solid;
+table {
+    border-collapse: collapse;
 }
-.container {
-  padding: 16px;
-  padding-left: 120px;
+td {
+    padding: 4px 8px;
+    border: 1px solid #23628f;
 }
-.container h1,
-.container h2 {
-  margin: 0;
-  color: #fff;
-  line-height: 1;
-}
-.container h1 {
-  padding: 30px 0 5px 0;
-  font-size: 24px;
-  border-bottom: 1px dotted #fff;
-  font-weight: 500;
-}
-.container h2 {
-  padding: 6px 0 0 0;
-  font-size: 14px;
-  font-weight: 400;
-}
-main {
-  min-height: calc(100% - 156px);
-}
-main .container {
-  padding: 50px 120px;
-  background-color: #fff;
-}
-footer {
-  background-color: #1aaedb;
-}
-footer .container {
-  min-height: 50px;
-  padding-top:10px;
-  padding-bottom:10px;
-  color: #000;
-  font-size: 12px;
-  text-align: right;
-}
-@media (min-width: 768px) {
-  footer .container {
-    color: #fff;
-  }
+tr#allFile {
+    background:#AFEEEE;
 }
 </style>
 </head>
 <body>
 <header>
-<div class="container">
+<div class="header-contents">
 <h1>ファイル管理一覧</h1>
-<h2>全てのファイルとアクセス権を表示</h2>
+<h2>全てのフォルダとアクセス権を表示</h2>
 </div>
 </header>
-<main>
-<div class="container">
+<div class="main-wrapper">
 <section>
-  <table border ="1">
-    <tr id="File">
-      <th>フォルダ名</th>
-      <th>閲覧権限</th>
-      <th>編集権限</th>
-      <th>削除権限</th>
-    </tr>
-    <tr>
-      <td id="folderName1"></td>
-      <td id="viewAuth1"></td>
-      <td id="editAuth1"></td>
-      <td id="deleteAuth1"></td>
-    </tr>
-    <tr>
-      <td id="folderName2"></td>
-      <td id="viewAuth2"></td>
-      <td id="editAuth2"></td>
-      <td id="deleteAuth2"></td>
-    </tr>
-    <tr>
-      <td id="folderName3"></td>
-      <td id="viewAuth3"></td>
-      <td id="editAuth3"></td>
-      <td id="deleteAuth3"></td>
-    </tr>
-    <tr>
-      <td id="folderName4"></td>
-      <td id="viewAuth4"></td>
-      <td id="editAuth4"></td>
-      <td id="deleteAuth4"></td>
-    </tr>
-    <tr>
-      <td id="folderName5"></td>
-      <td id="viewAuth5"></td>
-      <td id="editAuth5"></td>
-      <td id="deleteAuth5"></td>
-    </tr>
-    <tr>
-      <td id="folderName6"></td>
-      <td id="viewAuth6"></td>
-      <td id="editAuth6"></td>
-      <td id="deleteAuth6"></td>
-    </tr>
-    <tr>
-      <td id="folderName7"></td>
-      <td id="viewAuth7"></td>
-      <td id="editAuth7"></td>
-      <td id="deleteAuth7"></td>
-    </tr>
-  </table>
+    <table>
+        <tr id="allFile">
+            <td>フォルダ名</td>
+            <td>閲覧権限</td>
+            <td>編集権限</td>
+            <td>削除権限</td>
+        </tr>
+        <tr>
+            <td id="folderName1"></td>
+            <td id="viewAuth1"></td>
+            <td id="editAuth1"></td>
+            <td id="deleteAuth1"></td>
+        </tr>
+        <tr>
+            <td id="folderName2"></td>
+            <td id="viewAuth2"></td>
+            <td id="editAuth2"></td>
+            <td id="deleteAuth2"></td>
+        </tr>
+        <tr>
+            <td id="folderName3"></td>
+            <td id="viewAuth3"></td>
+            <td id="editAuth3"></td>
+            <td id="deleteAuth3"></td>
+        </tr>
+        <tr>
+            <td id="folderName4"></td>
+            <td id="viewAuth4"></td>
+            <td id="editAuth4"></td>
+            <td id="deleteAuth4"></td>
+        </tr>
+        <tr>
+            <td id="folderName5"></td>
+            <td id="viewAuth5"></td>
+            <td id="editAuth5"></td>
+            <td id="deleteAuth5"></td>
+        </tr>
+        <tr>
+            <td id="folderName6"></td>
+            <td id="viewAuth6"></td>
+            <td id="editAuth6"></td>
+            <td id="deleteAuth6"></td>
+        </tr>
+        <tr>
+            <td id="folderName7"></td>
+            <td id="viewAuth7"></td>
+            <td id="editAuth7"></td>
+            <td id="deleteAuth7"></td>
+        </tr>
+    </table>
 </section>
 </div>
 <script>
@@ -166,8 +130,7 @@ footer .container {
       deleteAuth: '企画部'
     }
   };
-
-for (var i = 0; i < 7 ; i++) {
+for (var i = 0; i < 7; i++) {
   document.getElementById('folderName' + (i + 1)).textContent = fileManage['f00' + (i + 1)]['folderName'];
   document.getElementById('viewAuth' + (i + 1)).textContent = fileManage['f00' + (i + 1)]['viewAuth'];
   document.getElementById('editAuth' + (i + 1)).textContent = fileManage['f00' + (i + 1)]['editAuth'];
