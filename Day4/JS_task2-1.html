@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <title>kintone の月額料金</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <style type="text/css">
+    h1 {
+      border: solid 3px #FFBF00;
+      padding: 3px;
+      color: #190707;
+      width: 400px;
+    }
+
+    div.user {
+      font-size: 14pt;
+      font-weight: bold;
+    }
+
+    form {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>kintone のライセンス料</h1>
+  <div class="user">最低ユーザー数(ライトコース)での利用料金</div>
+  <br>
+  <form>
+    <input type="checkbox" id="secure">セキュアオプション（1ユーザー あたり 250円）<br>
+    <input type="checkbox" id="disk">ディスク増設（10GB あたり 1000円）<br>
+    <h4>月額金額：<span id="price">3900</span>円</h4>
+  </form>
+  <script>
+    'use strict';
+    // querySelectorAllでチェックボックスの状態を定義
+    var checkbox_status = document.querySelectorAll('input[type="checkbox"]');
+    // 「クリックされたとき」をstatusとする
+    secure.onclick = status;
+    disk.onclick = status;
+    // 計算開始
+    function status() {
+      // ★↓ここに初期金額を定義。これがfunction外にあると、function内の250円と1000円が繰り返し3900円に足されていく一方となる。
+      var month_fee = 3900;
+      // チェックボックスにチェックされたとき、の状態を定義
+      var secure_check = checkbox_status[0].checked;
+      var disk_check = checkbox_status[1].checked;
+      // ↓このコンソールはインプットの確認
+      console.log('secure_check' + secure_check);
+      console.log('disk_check' + disk_check);
+      // チェックされたときの動き
+      if (secure_check === true) {
+        month_fee += 250;
+      }
+      if (disk_check === true) {
+        month_fee += 1000;
+      }
+      // ★function内で出した結果をfunction外で使いたいときは結果をreturnしないと使えない。→returnしたくないときはfunctionの中に入れる。
+      // ↓このコンソールはアウトプットの確認
+      console.log(month_fee);
+      // HTMLのpriceの値を変更する
+      document.getElementById('price').textContent = month_fee;
+    };
+  </script>
+</body>
+
+</html>
