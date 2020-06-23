@@ -47,8 +47,8 @@
       var secure_check = checkbox_status[0].checked;
       var disk_check = checkbox_status[1].checked;
       // ↓このコンソールはインプットの確認
-      console.log('secure_check' + secure_check);
-      console.log('disk_check' + disk_check);
+      // console.log('secure_check' + secure_check);
+      // console.log('disk_check' + disk_check);
       // チェックされたときの動き
       if (secure_check === true) {
         month_fee += 250;
@@ -58,10 +58,11 @@
       }
       // ★function内で出した結果をfunction外で使いたいときは結果をreturnしないと使えない。→returnしたくないときはfunctionの中に入れる。
       // ↓このコンソールはアウトプットの確認
-      console.log(month_fee);
+      // console.log(month_fee);
       // HTMLのpriceの値を変更する
       document.getElementById('price').textContent = month_fee;
     };
+    status();
   </script>
 </body>
 

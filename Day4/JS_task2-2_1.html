@@ -1,0 +1,91 @@
+<html>
+
+<head>
+<title>kintone の月額料金</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css">
+h1 {
+    border:solid 3px #FFBF00;
+    padding:3px;
+    color:#190707;
+    width: 400px;
+}
+div.user {
+    font-size:14pt;
+    font-weight:bold;
+}
+form {
+    margin-left:20px;
+}
+button {
+    margin-right: 15px;
+}
+</style>
+</head>
+<body>
+    <h1>kintone のライセンス料</h1>
+    <div class="user">最低ユーザー数(ライトコース)での利用料金</div><br>
+    <form>
+        <input type="checkbox" id="secure">セキュアオプション（1ユーザー あたり 250円） ×
+        <select>
+            <option value="1">1名</option>
+            <option value="2">2名</option>
+            <option value="3">3名</option>
+            <option value="4">4名</option>
+            <option value="5">5名</option>
+        </select>
+        <br>
+        <input type="checkbox" id="disk">ディスク増設（10GB あたり 1000円） ×
+        <select>
+            <option value="1">10GB</option>
+            <option value="2">20GB</option>
+            <option value="3">30GB</option>
+            <option value="4">40GB</option>
+            <option value="5">50GB</option>
+        </select>
+        <h4><button onclick="math()" type="button" id="math_button">計算</button>月額金額：<span id="price">3900</span>円</h4>
+    </form>
+<script>
+  'use strict';
+  // querySelectorAllでチェックボックスの状態を定義
+  var checkbox_status = document.querySelectorAll('input[type="checkbox"]');
+  // ユーザー数、ギガ数の状態を定義
+  var select_status = document.querySelectorAll('select'); //箱を指定する
+  // console.log('select_status' + select_status);
+  // console.log(select_status);
+  // 「クリックされたとき」をstatusとする → 以下2行を定義してしまうとチェックボックスを押した瞬間に下のfunctionが実行されてしまう
+  // secure.onclick = math;
+  // disk.onclick = math;
+  // math_button.onclick = math;
+  // 計算開始
+  function math() {
+    // ★↓ここに初期金額を定義。これがfunction外にあると、function内の250円と1000円が繰り返し3900円に足されていく一方となる。
+    var month_fee = 3900;
+    // チェックボックスにチェックされたとき、の状態を定義
+    var secure_check = checkbox_status[0].checked;
+    var disk_check = checkbox_status[1].checked;
+    // セレクトボックスで数値が選ばれたとき、を定義  
+    var secure_select = select_status[0].value; //ユーザーの1～5
+    var disk_select = select_status[1].value; //GBの1～5
+    // ↓このコンソールはインプットの確認
+    // console.log('secure_select' + secure_select);
+    // console.log('disk_select' + disk_select);
+    // チェックされたときの動き
+    if (secure_check === true) {
+      month_fee += 250 * secure_select; //→ここに選んだ数値を使いたい
+      // console.log('month_fee = ' + month_fee);
+    }
+    if (disk_check === true) {
+      month_fee += 1000 * disk_select;
+      // console.log('disk_select = ' + disk_select);
+    }
+    // ★function内で出した結果をfunction外で使いたいときは結果をreturnしないと使えない。→returnしたくないときはfunctionの中に入れる。
+    // ↓このコンソールはアウトプットの確認
+    // console.log(month_fee);
+    // HTMLのpriceの値を変更する
+    document.getElementById('price').textContent = month_fee;
+  };
+</script>
+</body>
+</html>
